@@ -6,9 +6,10 @@ class App extends React.Component {
       <div className="app">
         <h1>Прогноз погоды</h1>
         <div>
-          <input type="text" />
+          <input type="text" placeholder="Найти локацию..." />
         </div>
       </div>
     );
   }
 }
+export default App;
