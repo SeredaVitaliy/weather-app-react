@@ -33,19 +33,18 @@ function formatDay(dateStr) {
 }
 
 class App extends React.Component {
-  state = {
-    location: "lisbon",
-    isLoading: false,
-    dispalayLocation: "",
-    weather: {},
-  };
-  // constructor(prorps) {
-  //   super(prorps);
-  //   this.fetchWeather = this.fetchWeather.bind(this);
-  // }
+  constructor(prorps) {
+    super(prorps);
+    this.state = {
+      location: "lisbon",
+      isLoading: false,
+      dispalayLocation: "",
+      weather: {},
+    };
+    this.fetchWeather = this.fetchWeather.bind(this);
+  }
 
-  // async fetchWeather() {
-  fetchWeather = async () => {
+  async fetchWeather() {
     this.setState({ isLoading: true });
     try {
       // 1) Getting location (geocoding)
@@ -75,7 +74,7 @@ class App extends React.Component {
     } finally {
       this.setState({ isLoading: false });
     }
-  };
+  }
 
   render() {
     return (
@@ -89,9 +88,7 @@ class App extends React.Component {
             onChange={(e) => this.setState({ location: e.target.value })}
           />
         </div>
-        <button className="search__button" onClick={this.fetchWeather}>
-          Узнать погоду
-        </button>
+        <button onClick={this.fetchWeather}>Узнать погоду</button>
 
         {this.state.isLoading && <p className="loader">Загрузка...</p>}
 
