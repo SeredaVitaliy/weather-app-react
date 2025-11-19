@@ -83,11 +83,16 @@ class App extends React.Component {
   //метод, вызываемый сразу после рендеринга
   componentDidMount() {
     //  this.fetchWeather();
+
+    //установка состояния послупающего из локал сторадж
+    this.setState({ location: localStorage.getItem("location") || "" });
   }
-  //
+  //метод жизненного цикла обновления компонента
   componentDidUpdate(prevProps, prevState) {
     if (this.state.location !== prevState.location) {
       this.fetchWeather();
+
+      localStorage.setItem("location", this.state.location);
     }
   }
 
